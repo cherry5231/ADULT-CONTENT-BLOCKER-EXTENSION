@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Adult Content Blocker — Settings</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>Adult Content Blocker</h1>
+
+    <section class="card">
+      <div class="row space-between">
+        <div>
+          <h2>Blocking</h2>
+          <p class="muted">When off, no sites are blocked.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="enabledToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>PIN Lock</h2>
+      <p class="muted">Set a PIN so blocking can't be turned off or edited without it. This does not stop someone from removing the extension entirely in browser settings — pair it with your browser's profile / parental-control lock for that.</p>
+      <div id="pinStatus" class="muted"></div>
+      <div class="row" id="pinSetup">
+        <input type="password" id="newPin" placeholder="New PIN" inputmode="numeric">
+        <button id="setPinBtn">Set PIN</button>
+      </div>
+      <div class="row" id="pinChange" style="display:none">
+        <input type="password" id="oldPin" placeholder="Current PIN">
+        <button id="removePinBtn">Remove PIN</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Add a site</h2>
+      <div class="row">
+        <input type="text" id="newDomain" placeholder="example.com">
+        <button id="addDomainBtn">Add</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Import a list</h2>
+      <p class="muted">Paste one domain per line (e.g. from a hosts-file style blocklist), then import.</p>
+      <textarea id="importBox" rows="5" placeholder="example.com
+another-example.com"></textarea>
+      <div class="row">
+        <button id="importBtn">Import</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Blocked sites (<span id="count">0</span>)</h2>
+      <p class="muted">Default built-in sites aren't listed individually here and can't be removed; this list is your custom additions.</p>
+      <ul id="domainList" class="domain-list"></ul>
+    </section>
+
+    <div id="toast" class="toast"></div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
